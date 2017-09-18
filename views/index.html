@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="attendApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <script src="../public/js/js.js"></script>
+</head>
+<body ng-controller="">
+    <nav class="navbar navbar-default navbar-fixed-top" ng-show="isShowBackBtn">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button class="btn btn-group-sm navbar-btn" data-toggle="tooltip" data-placement="bottom" title="返回上一层">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                <p class="navbar-text navbar-center">
+                    {{titleInfo}}
+                </p>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div ng-view></div>
+    </div>
+
+</body>
+</html>

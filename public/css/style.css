@@ -1,0 +1,36 @@
+
+/*首页返回按钮位置*/
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none;
+}
+
+.navbar-btn{
+
+    font-size: 20px;
+    margin-left: 20px;
+
+    color: white;
+    background-color: #735288;
+}
+
+.navbar-btn:hover{
+    color: bisque;
+}
+
+.navbar-default{
+    background-color: #735288;
+}
+
+/*首页导航栏文字*/
+.navbar-center{
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    font-size: 20px;
+    color: white !important;
+}
