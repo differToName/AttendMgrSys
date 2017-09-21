@@ -2,31 +2,90 @@
 <html lang="en" ng-app="attendApp">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>课程签到系统</title>
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../node_modules/angular/angular.min.js"></script>
     <link rel="stylesheet" href="../public/css/style.css">
-    <script src="../public/js/js.js"></script>
-</head>
-<body ng-controller="">
-    <nav class="navbar navbar-default navbar-fixed-top" ng-show="isShowBackBtn">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button class="btn btn-group-sm navbar-btn" data-toggle="tooltip" data-placement="bottom" title="返回上一层">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </button>
-                <p class="navbar-text navbar-center">
-                    {{titleInfo}}
-                </p>
-            </div>
-        </div>
-    </nav>
+    <link rel="stylesheet" href="../public/css/stuCourse.css">
+    <script src="../node_modules/angular-route/angular-route.min.js"></script>
+    <script src="../node_modules/moment/moment.js"></script>
+    <!--app area-->
+    <script src="../app/appModule.js"></script>
+    <script src="../app/appRouteConfig.js"></script>
 
-    <div class="container">
+    <script src="../public/js/js.js"></script>
+    <link rel="stylesheet" href="../public/css/stuInfo.css">
+    <!--headerPage-->
+    <script src="headerPage/headerController.js"></script>
+    <script src="headerPage/headerDirective.js"></script>
+
+    <!--login area-->
+    <script src="loginPages/loginModule.js"></script>
+    <script src="loginPages/loginDirective.js"></script>
+    <script src="loginPages/loginController.js"></script>
+    <!--stu area-->
+    <script src="studentPages/stuModule.js"></script>
+    <script src="studentPages/stuController.js"></script>
+    <!--stuIndex-->
+    <script src="studentPages/stuIndex/stuIndexDirective.js"></script>
+    <script src="studentPages/stuIndex/stuIndexController.js"></script>
+    <!--stu Sign Course-->
+    <script src="studentPages/stuShowCourse/stuCourseInfoDirctive.js"></script>
+    <script src="studentPages/stuShowCourse/stuCourseInfoController.js"></script>
+
+    <!--stu info page-->
+    <script src="studentPages/stuInfoPage/stuInfoController.js"></script>
+    <script src="studentPages/stuInfoPage/stuInfoDirective.js"></script>
+
+    <!--teacher Index page-->
+    <script src="teacherPages/teacherModule.js"></script>
+    <script src="teacherPages/teacherCtrl.js"></script>
+    <script src="teacherPages/teacherDirective.js"></script>
+    <!--teacher brDashboad-->
+    <script src="teacherPages/brDashboard/brDashboardModule.js"></script>
+    <!--teacher brFramwoek-->
+    <link rel="stylesheet" href="teacherPages/brFramework/brFramework.css">
+    <script src="teacherPages/brFramework/brFrameworkModule.js"></script>
+    <script src="teacherPages/brFramework/brFrameworkController.js"></script>
+    <script src="teacherPages/brFramework/brFrameworkDirective.js"></script>
+    <!--teacher brMenu-->
+    <link rel="stylesheet" href="teacherPages/brMenu/psMenu.css">
+    <script src="teacherPages/brMenu/brMenuModule.js"></script>
+    <script src="teacherPages/brMenu/brMenuController.js"></script>
+    <script src="teacherPages/brMenu/brMenuDirective.js"></script>
+    <!--teacher brMenuGroup-->
+    <script src="teacherPages/brMenu/brMenuGroupDirective.js"></script>
+    <!--teacher brMenuItem-->
+    <script src="teacherPages/brMenu/brMenuItemDirective.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="">
         <div ng-view></div>
     </div>
+
+    <div class="footer-bar">
+        <div class="col-xs-12 text-center">
+            <p class="text-muted credit" style="padding: 10px;">
+                Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="#">课程签到系统</a>
+            </p>
+        </div>
+    </div>
+</div>
+<!--<footer class="footer">-->
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">-->
+<!--<div class="footer-text wow fadeInUp" data-wow-delay="0.4s">-->
+<!--<p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</footer>-->
 
 </body>
 </html>

@@ -66,6 +66,13 @@ exports.update = function(collectionName,filter,doc,callback){
     });
 }
 
+// exports.updateNumber=function (collectionName,filter,doc,callback) {
+//     connDB(function (err,db) {
+//         db.collection(collectionName)
+//             // .update()
+//     })
+// }
+
 //filter:查询条件
 //pagesize:每页规模
 //pageno:第几页
@@ -84,16 +91,17 @@ exports.query = function(collectionName,filter,pageSize,pageNo,sort,callback){
         //console.log(cursor);
         cursor.each(function(err,doc){
             if (err) {
+                console.log("dbUtils err:"+err);
                 callback(err, null);
                 db.close(); //关闭数据库
                 return;
             }
             if (doc != null) {
                 result.push(doc);   //放入结果数组
-                console.log(doc);
+                //console.log(doc);
             } else {
                 //遍历结束，没有更多的文档了
-                console.log(result);
+                //console.log("dbUtile result:"+result);
                 callback(null, result);
                 db.close(); //关闭数据库
             }
@@ -101,3 +109,19 @@ exports.query = function(collectionName,filter,pageSize,pageNo,sort,callback){
 
     })
 }
+
+// exports.aggregateQuery=function (collectionName,filter,callback) {
+//     connDB(function (err,db) {
+//         db.collection(collectionName)
+//             .aggregate(filter,function (err,rest) {
+//                     if(err){
+//                         console.log(err);
+//                         db.close();
+//                         callback(err,null);
+//                     }
+//
+//                     callback(null,rest);
+//                     db.close();
+//              });
+//     })
+// }

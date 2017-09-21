@@ -1,10 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="">
+    <app-header pageTitle="个人资料" showBtn="T"></app-header>
+    <!--ng-show="isShowStuInfo"-->
+    <div class="row stu-info-thumbnail-contain" ng-if="!stuInfoErrorInfo" >
+        <div class="col-xs-offset-1 col-sm-10 col-md-10">
+            <div class="thumbnail stu-info-thumbnail">
+                <!--http://localhost/studentPic/s001.jpg {{stuPicUrl}}-->
+                <img src="{{stuInfo.stuImg}}" class="stu-info-pic">
+                <div class="caption">
+                    <h3>{{stuInfo.stuName}}同学的个人资料</h3>
+                    <p>
+                    <table class="table table-hover stu-info-tb " align="center">
+                        <tbody>
+                        <tr >
+                            <td class="col-xs-6">学生学号：</td>
+                            <td class="col-xs-6">{{stuInfo.stuNo}}</td>
+                        </tr>
+                        <tr>
+                            <td>学生姓名：</td>
+                            <td>{{stuInfo.stuName}}</td>
+                        </tr>
+                        <tr>
+                            <td>学生性别：</td>
+                            <td>{{stuInfo.stuSex}}</td>
+                        </tr>
+
+                            <tr ng-repeat="scoreInfo in stuCourseScoreInfo">
+                                <td>课程名称：{{scoreInfo.className}}</td>
+                                <td>考勤分：{{scoreInfo.attendScore}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    </p>
+
+                    <p>
+                        <a class="btn btn-primary" role="button" onclick="history.go(-1)">返回</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--显示错误信息-->
+    <div ng-if="stuInfoErrorInfo">
+        没有相关学生信息
+    </div>
+    <!--&lt;!&ndash;modify stuInfo&ndash;&gt;-->
+    <!--<div>-->
+        <!--<form>-->
+            <!--<div class="form-group">-->
+                <!--<label for="exampleInputEmail1">Email address</label>-->
+                <!--<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label for="exampleInputPassword1">Password</label>-->
+                <!--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<label for="exampleInputFile">File input</label>-->
+                <!--<input type="file" id="exampleInputFile">-->
+                <!--<p class="help-block">Example block-level help text here.</p>-->
+            <!--</div>-->
+            <!--<div class="checkbox">-->
+                <!--<label>-->
+                    <!--<input type="checkbox"> Check me out-->
+                <!--</label>-->
+            <!--</div>-->
+            <!--<button type="submit" class="btn btn-default">Submit</button>-->
+        <!--</form>-->
+    <!--</div>-->
+</div>

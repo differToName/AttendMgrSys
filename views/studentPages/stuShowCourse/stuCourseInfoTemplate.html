@@ -1,0 +1,142 @@
+<div>
+    <app-header pageTitle="学生课程签到记录" showBtn="T"></app-header>
+
+    <div class="stu-course-panel ">
+        <div class="row">
+            <button id="attend-btn" class="btn btn-lg col-xs-offset-1  btn-success col-xs-2 btn-resize" type="button"
+                    data-toggle="modal" title="点击查看出勤总记录"
+                    data-target=".bs-example-modal-lg" ng-click="checkAttendInfo(attendCnt,attendRecord)">总出勤次数<span
+                    class="badge">{{attendCnt}}</span></button>
+
+            <button id="late-btn" class="btn btn-lg btn-warning col-xs-offset-2  col-xs-2 btn-resize-t" type="button"
+                    data-toggle="modal" title="点击查看迟到总记录"
+                    data-content="And here's some amazing content. It's very engaging. Right?"
+                    data-target=".bs-example-modal-lg" ng-click="checkLateInfo(lateCnt,lateRecord)">总迟到次数<span
+                    class="badge">{{lateCnt}}</span></button>
+
+            <button id="truant-btn" class="btn btn-lg btn-danger col-xs-offset-2 col-xs-2 btn-resize-t" type="button"
+                    data-toggle="modal" title="点击查看旷课总记录"
+                    data-content="And here's some amazing content. It's very engaging. Right?"
+                    data-target=".bs-example-modal-lg" ng-click="checkTruantInfo(truantCnt,truantRecord)">总旷课次数<span
+                    class="badge">{{truantCnt}}</span>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- signRecordModal -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{signRecordTitle}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-body">
+                        <p><label class="label-warning">迟到扣5分，缺勤扣10分</label></p>
+                    </div>
+
+                    <table ng-show="showRec" class="table">
+                        <tr>
+                            <th>序号</th>
+                            <th>课程名称</th>
+                            <th>课次</th>
+                            <th>授课老师</th>
+                            <th>上课开始时间</th>
+                            <th>上课结束时间</th>
+                            <th>签到时间</th>
+                            <th>考勤情况</th>
+                        </tr>
+
+                        <tr ng-repeat="rec in differRecords">
+                            <td>{{$index+1}}</td>
+                            <td>{{rec.className}}</td>
+                            <td>{{rec.classTimes}}</td>
+                            <td>{{rec.classTeacher}}</td>
+                            <td>{{rec.classBeginTime}}</td>
+                            <td>{{rec.classEndTime}}</td>
+                            <td>{{rec.signTime}}</td>
+                            <td ng-if="rec.attendStatus=='A'"><label class="label-success">出勤</label></td>
+                            <td ng-if="rec.attendStatus=='L'"><label class="label-warning">迟到</label></td>
+                            <td ng-if="rec.attendStatus=='U'"><label class="label-danger">缺勤</label></td>
+                        </tr>
+
+                    </table>
+                    <label ng-show="!showRec" style="font-size: 20px;text-align: center;position: relative;left: 45%">没有记录</label>
+                </div>
+                <!--<div class="panel-footer">-->
+                <!--<p>当前学分:{{attendScore}}</p>-->
+                <!--</div>-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--错误信息-->
+    <div ng-show="!errorInfo">
+        <p style="position: relative;top: 350px;font-size: 30px;text-align: center;color: red;width: 100%;background-color:#ffd6ab;">
+            {{errorInfo}}
+        </p>
+    </div>
+
+    <div class="stu-index-layout">
+        <div class="row ">
+            <div ng-repeat="course in courses">
+                <button class="btn stu-course-info-btn col-xs-12"
+                        ng-class='{"N":"btn-primary","A":"btn-success","L":"btn-warning","U":"btn-danger","B":"btn-default"}[course.courseStatus]'
+                        ng-click="toSetUpCourse(course)"
+                        ng-disabled="!(course.attendStatus==='N')"
+                        >
+                    <span>课程：{{course.className}}</span><br>
+                    <span>课次：第{{course.classTimes}}次课</span><br>
+                    <span>授课时间：{{course.classBeginTime}}<==>{{course.classEndTime}}</span><br>
+                    <span>授课老师：{{course.classTeacher}}</span><br>
+                    <span ng-if="course.attendStatus==='N'" class="label label-info">签到状态：未签到，请点击签到</span>
+                    <span ng-if="course.attendStatus==='B'" class="label label-warning">签到状态:未签到，未到签到时间，不能签到</span>
+                    <span ng-if="course.attendStatus==='A'" class="label label-primary">签到状态：已签到，正常出勤，非常棒</span>
+                    <span ng-if="course.attendStatus==='L'" class="label label-danger">签到状态：已签到，您已经迟到了</span>
+                    <span ng-if="course.attendStatus==='U'" class="label label-default">签到状态：不能签到，您旷了这节课</span>
+                </button>
+                <!--<div class="stu-course-div-block">-->
+                <!---->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <!--输入密码模态窗-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalPWD">请输入密码</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="course-pwd">课程签到密码</label>
+                        <input type="password" name="coursePWD" class="form-control" id="course-pwd"
+                               placeholder="Password" required="true" ng-model="inputPwd" maxlength="15">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                    <button type="button" class="btn btn-primary"  ng-click="toSignCourseToDb()"
+                            ng-disabled="!inputPwd">签到
+                    </button>
+                </div>
+                <div ng-show="identifyPWD" class="text-center" style="background-color:#ccc;" >
+                    <label style="color: red;font-size: 20px">输入密码错误</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

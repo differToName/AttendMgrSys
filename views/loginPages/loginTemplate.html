@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div>
+    <app-header pageTitle="请登陆" showBtn="F"></app-header>
+    <div class="row">
+        <div class="jumbotron col-xs-offset-2  col-xs-8">
+            <div>
+                <h2 class="text-center">欢迎使用课程签到系统</h2>
+            </div>
+
+            <form class="form-horizontal login-form-center" name="loginForm">
+                <div class="form-group">
+                    <label for="login-no">用户账号：</label>
+                    <input type="text" class="form-control login-input-size" id="login-no" placeholder="请输入8位学号或者工号"
+                           maxlength="8" name="loginNo" ng-model="loginNo" required="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="login-pwd">用户密码：</label>
+                    <input type="password" class="form-control login-input-size" id="login-pwd" placeholder="请输入3-15位密码"
+                           maxlength="15" name="loginPWD" ng-model="loginPWD" required="true">
+                </div>
+
+                <div class="radio" class="form-group login-radio-center">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="studentRadio" value="T" ng-model="loginUser"
+                               checked>
+                        教师
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>
+                        <input type="radio" name="optionsRadios" id="teacherRadio" value="S" ng-model="loginUser">
+                        学生
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary login-btn-text-center" ng-click="toLogin()"
+                            ng-disabled="loginForm.$invalid">登陆
+                    </button>
+                </div>
+
+            </form>
+
+            <div id="loginError" class="alert alert-danger alert-dismissible" role="alert" ng-if="errorMessage">
+                <button type="button" class="close" aria-label="Close" ng-click="changeHidden()"><span
+                        aria-hidden="true">&times;</span></button>
+                <strong>{{errorMessage}}</strong>
+            </div>
+        </div>
+    </div>
+</div>

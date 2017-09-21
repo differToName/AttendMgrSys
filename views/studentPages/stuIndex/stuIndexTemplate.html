@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div>
+    <app-header pageTitle="学生签到首页" showBtn="T"></app-header>
+    <div class="stu-index-layout">
+        <div class="row">
+
+            <div class="col-lg-3 col-sm-5 col-xs-12 stu-index-div">
+                <button class="btn btn-primary btn-block stu-index-btn-block" ng-click="toSignCourse()">
+                    课程签到
+                </button>
+            </div>
+
+            <div class="col-lg-3 col-sm-5 col-xs-12 stu-index-div stu-index-lg-page stu-index-sm-page">
+                <button class="btn btn-primary btn-block stu-index-btn-block" ng-click="showStuInfo()">
+                    个人资料
+                </button>
+            </div>
+
+            <div class="col-lg-3 col-sm-5 col-xs-12 stu-index-div stu-index-lg-page" >
+                <button class="btn btn-primary btn-block stu-index-btn-block" ng-click="toModifyPWD()">
+                    修改密码
+                </button>
+            </div>
+
+            <div class="col-lg-3 col-sm-5 col-xs-12 stu-index-div stu-index-sm-page" >
+                <button class="btn btn-primary btn-block stu-index-btn-block" ng-click="toLogOut()">
+                    退出系统
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <!--modale for update PWD-->
+    <div class="modal" id="modifyUserPWD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="userOldPWD">请输入旧密码</label>
+                        <input type="password" name="oldUserPWD" class="form-control" id="userOldPWD"
+                               placeholder="Password" required="true" ng-model="oldUserPWD" maxlength="15">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userNewPWD">请输入新密码</label>
+                        <input type="password" name="newUserPWD" class="form-control" id="userNewPWD"
+                               placeholder="Password" required="true" ng-model="newUserPWD" maxlength="15">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userNewPWD2">请输入再次输入新密码</label>
+                        <input type="password" name="newUserPWD2" class="form-control" id="userNewPWD2"
+                               placeholder="Password" required="true" ng-model="newUserPWD2" maxlength="15">
+                    </div>
+                    <!--errorMessage-->
+                    <div id="loginError" class="alert alert-danger alert-dismissible" role="alert" ng-if="errorMessage">
+                        <button type="button" class="close" aria-label="Close" ng-click="changeHidden()"><span
+                                aria-hidden="true">&times;</span></button>
+                        <strong>{{errorMessage}}</strong>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" ng-disabled="!(oldUserPWD && newUserPWD && newUserPWD2 )"  ng-click="modifyPWD()">确认修改</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,7 @@
+body{
+    background-color: rgba(93, 119, 128, 0.32);
+}
+
 
 /*首页返回按钮位置*/
 .btn:focus,
@@ -10,12 +14,12 @@
 }
 
 .navbar-btn{
-
+    position: absolute;
     font-size: 20px;
-    margin-left: 20px;
-
     color: white;
     background-color: #735288;
+    left: 1%;
+    top: -40%;
 }
 
 .navbar-btn:hover{
@@ -29,8 +33,121 @@
 /*首页导航栏文字*/
 .navbar-center{
     position: absolute;
-    left: 50%;
-    top: 0%;
-    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    top: -15%;
+    font-size: 25px;
     color: white !important;
+}
+
+/*角标*/
+.footer-bar{
+    position: relative;
+    top:250px;
+    /*left: 35%;*/
+    /*transform: translate(50%,50%);*/
+    /*text-align: center;*/
+}
+
+
+/*登陆界面*/
+.jumbotron{
+    position: relative;
+    top:250px;
+    height: 450px;
+    font-size: 15px;
+    width: 70%;
+    /*left: 200px;*/
+}
+
+.jumbotron h2{
+    margin-bottom:40px;
+}
+
+.jumbotron div{
+    margin-top: 10px;
+}
+
+.login-radio-center{
+    position: relative;
+}
+.login-input-size{
+    width: 50%;
+}
+
+.login-form-center{
+    position: relative;
+    left:28%;
+}
+
+.login-btn-text-center{
+   position: relative;
+    left: 17%;
+    top: 20px;
+    margin-bottom: 10px;
+}
+
+.alert-dismissible{
+    text-align: center;
+}
+
+/*学生首页*/
+.stu-index-btn-block{
+    /*margin-left: -20px;*/
+    position: absolute;
+    height: 200px;
+
+    font-size: 30px;
+}
+
+.stu-index-div{
+    position: relative;
+    height: 50px;
+    margin-top: 200px;
+}
+
+.stu-index-layout{
+    padding: 0px;
+    margin: 0px;
+}
+
+@media screen and (min-width:1200px){
+    .stu-index-lg-page{
+        margin-left: 120px;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .stu-index-sm-page{
+        margin-left: 80px;
+    }
+}
+/*小于768*/
+@media screen and (max-width: 768px) {
+    .stu-index-btn-block{
+        /*margin-left: -20px;*/
+        width: 80%;
+        height: 200px;
+        position: relative;
+        top: -80px;
+        font-size: 30px;
+        left: 10%;
+    }
+}
+
+/*学生签到面板*/
+.stu-course-button-block{
+    position: relative;
+    height: 200px;
+    background-color: #a4ff91;
+}
+
+.stu-course-panel{
+    position: relative;
+    top:80px;
+}
+
+.stu-course-info-btn{
+    position: relative;
 }
